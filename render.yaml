@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: innovatiqmedia-main-website
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-XSS-Protection
+        value: 1; mode=block
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_VERSION
+        value: 18.19.0
+      - key: VITE_API_URL
+        sync: false
+      - key: VITE_SERVICES_PORTAL_URL
+        sync: false
+      - key: VITE_SHOP_WEBSITE_URL
+        sync: false
