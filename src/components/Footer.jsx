@@ -191,12 +191,9 @@ function Footer() {
                   >
                     <motion.a 
                       href={link.href} 
-                      className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-xs sm:text-sm md:text-base inline-flex items-center gap-2 group"
+                      className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-xs sm:text-sm md:text-base"
                       whileHover={{ x: 5 }}
                     >
-                      <motion.span
-                        className="w-0 h-0.5 bg-gradient-to-r from-red-600 to-pink-600 group-hover:w-4 transition-all duration-300"
-                      />
                       {link.label}
                     </motion.a>
                   </motion.li>
@@ -237,12 +234,9 @@ function Footer() {
                     <motion.a 
                       href={link.href}
                       {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-xs sm:text-sm md:text-base inline-flex items-center gap-2 group"
+                      className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-xs sm:text-sm md:text-base"
                       whileHover={{ x: 5 }}
                     >
-                      <motion.span
-                        className="w-0 h-0.5 bg-gradient-to-r from-red-600 to-pink-600 group-hover:w-4 transition-all duration-300"
-                      />
                       {link.label}
                     </motion.a>
                   </motion.li>
@@ -292,30 +286,53 @@ function Footer() {
                     info@innovatiqmedia.com
                   </motion.a>
                 </motion.li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <motion.li className="flex items-start gap-2"
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    visible: { opacity: 1, x: 0 }
+                  }}
+                >
+                  <motion.svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    whileHover={{ scale: 1.2, rotate: 15 }}
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <a href="tel:+918651792079" className="hover:text-gray-900 transition-colors">
+                  </motion.svg>
+                  <motion.a href="tel:+918651792079" className="hover:text-gray-900 transition-colors"
+                    whileHover={{ x: 5 }}
+                  >
                     (+91) 8651792079
-                  </a>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  </motion.a>
+                </motion.li>
+                <motion.li className="flex items-start gap-2"
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    visible: { opacity: 1, x: 0 }
+                  }}
+                >
+                  <motion.svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    whileHover={{ scale: 1.2, rotate: 15 }}
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
+                  </motion.svg>
                   <span>123 Business Street<br />Suite 100, City, State 12345</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                </motion.li>
+                <motion.li className="flex items-start gap-2"
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    visible: { opacity: 1, x: 0 }
+                  }}
+                >
+                  <motion.svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    whileHover={{ scale: 1.2, rotate: 15 }}
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                  </motion.svg>
                   <span>Mon-Fri: 9AM - 6PM<br />Sat: 10AM - 4PM</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+                </motion.li>
+              </motion.ul>
+            </motion.div>
+          </motion.div>
           
           {/* Bottom Bar */}
           <motion.div 
@@ -349,15 +366,10 @@ function Footer() {
                   <motion.a 
                     key={index}
                     href={link.href} 
-                    className="hover:text-gray-900 transition-colors duration-200 relative"
+                    className="hover:text-gray-900 transition-colors duration-200"
                     whileHover={{ y: -2 }}
                   >
                     {link.label}
-                    <motion.span
-                      className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-pink-600"
-                      whileHover={{ width: '100%' }}
-                      transition={{ duration: 0.3 }}
-                    />
                   </motion.a>
                 ))}
               </motion.div>

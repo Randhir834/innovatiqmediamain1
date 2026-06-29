@@ -6,14 +6,12 @@ import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollProgress from './components/animations/ScrollProgress'
-import CustomCursor from './components/animations/CustomCursor'
 
 function App() {
   return (
     <>
       <ScrollToTop />
       <ScrollProgress />
-      <CustomCursor />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
