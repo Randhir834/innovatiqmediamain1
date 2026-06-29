@@ -1,3 +1,13 @@
+import { motion } from 'framer-motion'
+import FadeIn from '../components/animations/FadeIn'
+import TextReveal from '../components/animations/TextReveal'
+import CountUp from '../components/animations/CountUp'
+import TiltCard from '../components/animations/TiltCard'
+import SpotlightCard from '../components/animations/SpotlightCard'
+import GradientText from '../components/animations/GradientText'
+import MagneticButton from '../components/animations/MagneticButton'
+import FloatingElement from '../components/animations/FloatingElement'
+
 function AboutPage() {
   const values = [
     {
@@ -59,95 +69,168 @@ function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Story Section - 2 Column Sticky like Features */}
-      <section className="relative pt-8 sm:pt-10 md:pt-12 lg:pt-16 pb-16 sm:pb-24 md:pb-32 lg:pb-40 bg-white">
+      <section className="relative pt-8 sm:pt-10 md:pt-12 lg:pt-16 pb-16 sm:pb-24 md:pb-32 lg:pb-40 bg-white overflow-hidden">
+        {/* Floating Elements */}
+        <FloatingElement delay={0} duration={6}>
+          <div className="absolute top-20 right-10 w-32 h-32 bg-red-100 rounded-full blur-3xl opacity-20" />
+        </FloatingElement>
+        <FloatingElement delay={2} duration={8}>
+          <div className="absolute bottom-40 left-10 w-40 h-40 bg-pink-100 rounded-full blur-3xl opacity-20" />
+        </FloatingElement>
+        
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-start">
             {/* Left: Sticky Heading */}
-            <div className="lg:sticky lg:top-32">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight pb-2" style={{letterSpacing: '-0.02em', lineHeight: '1.2'}}>
-                About Innovatiq Media
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 font-light leading-relaxed mb-8 sm:mb-12">
+            <FadeIn direction="left" className="lg:sticky lg:top-32">
+              <TextReveal className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight pb-2" style={{letterSpacing: '-0.02em', lineHeight: '1.2'}}>
+                About <GradientText>Innovatiq Media</GradientText>
+              </TextReveal>
+              <motion.p 
+                className="text-base sm:text-lg md:text-xl text-gray-600 font-light leading-relaxed mb-8 sm:mb-12"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 A forward-thinking digital marketing agency dedicated to helping businesses grow in the digital world
-              </p>
+              </motion.p>
               
-              {/* Stats */}
-              <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 pt-6 sm:pt-8 border-t border-gray-200">
-                <div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1">5+</div>
+              {/* Stats with CountUp */}
+              <motion.div 
+                className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 pt-6 sm:pt-8 border-t border-gray-200"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <SpotlightCard className="p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text mb-1">
+                    <CountUp end={5} suffix="+" />
+                  </div>
                   <div className="text-xs sm:text-sm text-gray-600">Years Experience</div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1">100+</div>
+                </SpotlightCard>
+                <SpotlightCard className="p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text mb-1">
+                    <CountUp end={100} suffix="+" />
+                  </div>
                   <div className="text-xs sm:text-sm text-gray-600">Active Clients</div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1">90%</div>
+                </SpotlightCard>
+                <SpotlightCard className="p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text mb-1">
+                    <CountUp end={90} suffix="%" />
+                  </div>
                   <div className="text-xs sm:text-sm text-gray-600">Growth Rate</div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1">95%</div>
+                </SpotlightCard>
+                <SpotlightCard className="p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text mb-1">
+                    <CountUp end={95} suffix="%" />
+                  </div>
                   <div className="text-xs sm:text-sm text-gray-600">Satisfaction</div>
-                </div>
-              </div>
-            </div>
+                </SpotlightCard>
+              </motion.div>
+            </FadeIn>
 
             {/* Right: Content List */}
-            <div className="space-y-8 sm:space-y-10 md:space-y-12">
-              {/* Image */}
-              <div className="aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-gray-100">
-                <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&q=80" 
-                  alt="Team collaboration"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            <FadeIn direction="right" delay={0.3} className="space-y-8 sm:space-y-10 md:space-y-12">
+              {/* Image with Tilt */}
+              <TiltCard>
+                <motion.div 
+                  className="aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-gray-100 ring-2 ring-gray-200"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <motion.img 
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&q=80" 
+                    alt="Team collaboration"
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </motion.div>
+              </TiltCard>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-700 bg-gray-50 rounded-full">
-                  Award-Winning Work
-                </span>
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-700 bg-gray-50 rounded-full">
-                  Data-Driven Results
-                </span>
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-700 bg-gray-50 rounded-full">
-                  Full-Service Agency
-                </span>
-              </div>
-            </div>
+              {/* Tags with Animation */}
+              <motion.div 
+                className="flex flex-wrap gap-2 sm:gap-3"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ staggerChildren: 0.1 }}
+              >
+                {['Award-Winning Work', 'Data-Driven Results', 'Full-Service Agency'].map((tag, index) => (
+                  <motion.span 
+                    key={index}
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-700 bg-gray-50 rounded-full border border-gray-200"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {tag}
+                  </motion.span>
+                ))}
+              </motion.div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="relative py-16 sm:py-24 md:py-32 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
-          <div className="text-center mb-16 sm:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight pb-2" style={{lineHeight: '1.2'}}>
-              Our impact in numbers
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 font-light">
+      <section className="relative py-16 sm:py-24 md:py-32 bg-gray-50 overflow-hidden">
+        <FloatingElement delay={1} duration={7}>
+          <div className="absolute top-10 left-20 w-48 h-48 bg-red-100 rounded-full blur-3xl opacity-10" />
+        </FloatingElement>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 relative z-10">
+          <FadeIn direction="up" className="text-center mb-16 sm:mb-20">
+            <TextReveal className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight pb-2" style={{lineHeight: '1.2'}}>
+              Our impact in <GradientText>numbers</GradientText>
+            </TextReveal>
+            <motion.p 
+              className="text-lg sm:text-xl text-gray-600 font-light"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
               Real metrics from real client partnerships
-            </p>
-          </div>
+            </motion.p>
+          </FadeIn>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div 
+              <motion.div
                 key={index}
-                className="bg-white p-8 rounded-xl hover:shadow-xl transition-shadow duration-300 text-center group"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-3">
-                  {stat.number}
-                </div>
-                <div className="text-lg font-bold text-gray-900 mb-2">
-                  {stat.label}
-                </div>
-                <div className="text-sm text-gray-600">
-                  {stat.description}
-                </div>
-              </div>
+                <SpotlightCard className="bg-white p-8 rounded-xl text-center h-full">
+                  <motion.div 
+                    className="text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-3"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    {stat.number}
+                  </motion.div>
+                  <motion.div 
+                    className="text-lg font-bold text-gray-900 mb-2"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                  >
+                    {stat.label}
+                  </motion.div>
+                  <motion.div 
+                    className="text-sm text-gray-600"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.4 + index * 0.1 }}
+                  >
+                    {stat.description}
+                  </motion.div>
+                </SpotlightCard>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -158,35 +241,70 @@ function AboutPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-start">
             {/* Left: Sticky Heading */}
-            <div className="lg:sticky lg:top-32">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight pb-2" style={{letterSpacing: '-0.02em', lineHeight: '1.2'}}>
-                Our values
-              </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 font-light leading-relaxed">
+            <FadeIn direction="left" className="lg:sticky lg:top-32">
+              <TextReveal className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight pb-2" style={{letterSpacing: '-0.02em', lineHeight: '1.2'}}>
+                Our <GradientText>values</GradientText>
+              </TextReveal>
+              <motion.p 
+                className="text-base sm:text-lg md:text-xl text-gray-600 font-light leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
                 Core principles that guide every strategy, campaign, and partnership
-              </p>
-            </div>
+              </motion.p>
+            </FadeIn>
 
             {/* Right: Values List */}
             <div className="space-y-8 sm:space-y-10 md:space-y-12">
               {values.map((value, index) => (
-                <div key={index} className="group">
-                  <div className="text-xs sm:text-sm font-mono text-gray-400 mb-3 sm:mb-4">{value.number}</div>
-                  
-                  <h3 className="text-2xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-red-600 transition-colors">
-                    {value.title}
-                  </h3>
-                  <p className="text-base sm:text-lg text-gray-600 mb-2 leading-relaxed">
-                    {value.description}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    {value.detail}
-                  </p>
+                <motion.div 
+                  key={index} 
+                  className="group"
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <SpotlightCard className="p-6 sm:p-8 rounded-2xl bg-white border border-gray-100">
+                    <motion.div 
+                      className="text-xs sm:text-sm font-mono text-gray-400 mb-3 sm:mb-4"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      {value.number}
+                    </motion.div>
+                    
+                    <motion.h3 
+                      className="text-2xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-red-600 group-hover:to-pink-600 group-hover:bg-clip-text transition-all"
+                      whileHover={{ x: 10 }}
+                    >
+                      {value.title}
+                    </motion.h3>
+                    <motion.p 
+                      className="text-base sm:text-lg text-gray-600 mb-2 leading-relaxed"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      {value.description}
+                    </motion.p>
+                    <motion.p 
+                      className="text-sm text-gray-500"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      {value.detail}
+                    </motion.p>
+                  </SpotlightCard>
 
                   {index < values.length - 1 && (
-                    <div className="mt-8 sm:mt-10 md:mt-12 h-px bg-gray-200"></div>
+                    <div className="mt-8 sm:mt-10 md:mt-12 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -203,14 +321,20 @@ function AboutPage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 relative">
           {/* Header */}
-          <div className="max-w-3xl mb-16 sm:mb-20 md:mb-24">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-white leading-tight pb-2" style={{letterSpacing: '-0.02em', lineHeight: '1.2'}}>
-              Our expertise
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-rose-100/70 font-light leading-relaxed">
+          <FadeIn direction="up" className="max-w-3xl mb-16 sm:mb-20 md:mb-24">
+            <TextReveal className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-white leading-tight pb-2" style={{letterSpacing: '-0.02em', lineHeight: '1.2'}}>
+              Our <GradientText>expertise</GradientText>
+            </TextReveal>
+            <motion.p 
+              className="text-base sm:text-lg md:text-xl text-rose-100/70 font-light leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
               Specialized teams working together to deliver exceptional results
-            </p>
-          </div>
+            </motion.p>
+          </FadeIn>
 
           {/* Team Grid - Same as Services */}
           <div className="space-y-16 sm:space-y-24 md:space-y-32">
